@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Blue"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="2"
+    android:orientation="vertical">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.50"
+        android:gravity="center">
+        <TextView
+            android:text="00:00:00"
+            android:textSize="50dp"
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    <!--TextView
+			android:id="@+id/colon"
+			android:textSize="50dp"
+			android:text=":"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+		<TextView
+			android:text="00"
+			android:textSize="50dp"
+			android:id="@+id/min"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+		<TextView
+			android:id="@+id/colon"
+			android:textSize="50dp"
+			android:text=":"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+		<TextView
+			android:text="00"
+			android:textSize="50dp"
+			android:id="@+id/sec"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/-->
+    </LinearLayout>
+    <LinearLayout
+        style="@style/Yellow"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.25">
+        <TextView
+            android:text="Item 1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="SubItem 1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Estimate of Item 1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25">
+        <Button
+            style="@style/White"
+            android:id="@+id/startTimer"
+            android:text="Start"
+            android:textColor="@color/aClean_lightblue"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
+    </LinearLayout>
+</LinearLayout>

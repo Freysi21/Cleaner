@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+	<style name="NoActionBar" parent="@android:style/Theme.Holo.Light">
+		<item name="android:windowActionBar">false</item>
+		<item name="android:windowNoTitle">true</item>
+	</style> 
+	<style name="Blue" parent="@android:style/Theme.Material">
+		<item name="android:background">@color/aClean_lightblue</item>
+		<item name="android:colorPrimary">@color/aClean_lightblue</item>
+		<!--   darker variant for the status bar and contextual app bars -->
+		<item name="android:colorPrimaryDark">@color/aClean_darkblue</item>
+	</style>
+
+	<style name="White" parent="@android:style/Theme.Material">
+		<item name="android:background">@color/aClean_white</item>
+		<item name="android:colorPrimary">@color/aClean_lightblue</item>
+		<!--   darker variant for the status bar and contextual app bars -->
+		<item name="android:colorPrimaryDark">@color/aClean_yellow</item>
+	</style>
+
+	<style name="Yellow" parent="@android:style/Theme.Material">
+		<item name="android:background">@color/aClean_yellow</item>
+		<item name="android:colorPrimary">@color/aClean_yellow</item>
+		<!--   darker variant for the status bar and contextual app bars -->
+		<item name="android:colorPrimaryDark">@color/aClean_darkblue</item>
+	</style>
+
+	<style name="TaskPageTitle" parent="Blue">
+		<item name="android:text">Tasks for today</item>
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:padding">10dp</item>
+		<item name="android:textSize">40dp</item>
+	</style>
+
+	<style name="Clock" parent="@android:style/Theme.Material">
+		<item name="android:layout_weight">1</item>
+		<!--   darker variant for the status bar and contextual app bars -->
+	</style>
+</resources>
