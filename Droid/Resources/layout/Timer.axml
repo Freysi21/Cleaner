@@ -6,10 +6,9 @@
     android:weightSum="2"
     android:orientation="vertical">
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.50"
+        android:layout_height="0dp"
+        android:layout_weight="0.30"
         android:gravity="center">
         <TextView
             android:text="00:00:00"
@@ -17,54 +16,45 @@
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-    <!--TextView
-			android:id="@+id/colon"
-			android:textSize="50dp"
-			android:text=":"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"/>
-		<TextView
-			android:text="00"
-			android:textSize="50dp"
-			android:id="@+id/min"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"/>
-		<TextView
-			android:id="@+id/colon"
-			android:textSize="50dp"
-			android:text=":"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"/>
-		<TextView
-			android:text="00"
-			android:textSize="50dp"
-			android:id="@+id/sec"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"/-->
     </LinearLayout>
     <LinearLayout
         style="@style/Yellow"
-        android:id="@+id/content"
+        android:id="@+id/timerTask"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1.25">
-        <TextView
-            android:text="Item 1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:text="SubItem 1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:text="Estimate of Item 1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="1.45">
+        <android.support.v7.widget.CardView
+            style="@style/TaskCard"
+            android:layout_width="match_parent">
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/itemTitle"
+                    android:text="Title"
+                    android:textSize="20dp"
+                    android:textColor="@color/aClean_lightblue"
+                    android:layout_marginLeft="10dp"
+                    android:padding="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/itemSubTitle"
+                    android:text="subTitle"
+                    android:textSize="14dp"
+                    android:padding="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/aClean_lightblue"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="0.25">
         <Button
             style="@style/White"

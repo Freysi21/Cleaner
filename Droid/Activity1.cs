@@ -8,7 +8,6 @@ using Android.Widget;
 using Android.OS;
 using Android.Support.V4.View;
 using Android.Support.V4.App;
-
 using Clean;
 
 namespace Clean.Droid
@@ -17,6 +16,7 @@ namespace Clean.Droid
 	public class Activity1 : FragmentActivity
 	{
 		List<Task> tasks;
+		Task currTask;
 		protected override void OnCreate(Bundle bundle)
 		{
 			
@@ -28,12 +28,13 @@ namespace Clean.Droid
 			var pager = FindViewById<ViewPager>(Resource.Id.pager);
 			var adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager);
 			tasks = TaskController.getTasks ();
+			currTask = tasks [0];
 
 			pager.OffscreenPageLimit = 2;
 
 			adaptor.AddFragmentView((i, v, b) =>
 				{
-					TimerPage Timer = new TimerPage(v.Context, DateTime.Now);
+					TimerPage Timer = new TimerPage(v.Context, DateTime.Now, currTask);
 					return Timer;
 				}
 			);

@@ -3,18 +3,24 @@
     style="@style/Blue"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="2">
     <TextView
         style="@style/TaskPageTitle"
+        android:layout_weight="0.30"
         android:id="@+id/taskPageTitle" />
-    <ScrollView
+    <LinearLayout
+        android:layout_weight="1.7"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:orientation="vertical"
-            android:background="@color/aClean_white"
-            android:id="@+id/taskList"
+        android:layout_height="0dp">
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </ScrollView>
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/taskList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </ScrollView>
+    </LinearLayout>
 </LinearLayout>
