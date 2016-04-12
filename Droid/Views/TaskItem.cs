@@ -35,6 +35,10 @@ namespace Clean.Droid
 			TextView itemSubTitle = FindViewById<TextView> (Resource.Id.itemSubTitle);
 			itemSubTitle.SetText (this._task._address._city, TextView.BufferType.Normal);
 		}
+		public Task getTask()
+		{
+			return this._task;
+		}
 	}
 }
 

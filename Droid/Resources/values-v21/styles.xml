@@ -34,7 +34,17 @@
 	</style>
 
 	<style name="TaskCard" >
-		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textColor">@color/aClean_lightblue</item>
+		<item name="android:orientation">vertical</item>
+		<item name="cardBackgroundColor">@color/aClean_white</item>
+		<item name="cardElevation">4dp</item>
+		<item name="cardCornerRadius">2dp</item>
+	</style>
+
+	<style name="ProgressCard" >
+		<item name="android:layout_width">match_parent</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:textColor">@color/aClean_lightblue</item>
 		<item name="android:orientation">vertical</item>
@@ -46,5 +56,25 @@
 	<style name="Clock" parent="@android:style/Theme.Material">
 		<item name="android:layout_weight">1</item>
 		<!--   darker variant for the status bar and contextual app bars -->
+	</style>
+	<style name="progressBar" parent="Theme.AppCompat.Light">
+		<item name="background">@color/aClean_white</item>
+		<item name="android:progressTint">@color/aClean_lightblue</item>
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">80dp</item>
+		<item name="android:indeterminate">false</item>
+		<item name="android:max">100</item>
+		<item name="android:progress">20</item>
+		<item name="android:scrollbarSize">120dp</item>
+	</style>
+
+	<style name="progressBarBit">
+		<item name="android:visibility">invisible</item>
+		<item name="android:layout_width">0dp</item>
+		<item name="android:layout_height">20dp</item>
+		<item name="android:layout_marginLeft">2dp</item>
+		<item name="android:layout_marginRight">2dp</item>
+		<item name="android:layout_weight">1</item>
+		<item name="android:background">@color/aClean_lightblue</item>
 	</style>
 </resources>

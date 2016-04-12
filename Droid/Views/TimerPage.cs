@@ -22,7 +22,7 @@ namespace Clean.Droid
 		private Task _currTask;
 
 
-		private TextView _time;
+		private TextView _time = FindViewById<TextView> (Resource.Id.time);
 		private TextView _estimate;
 		private TextView _cardTitle;
 		private TextView _cardSubTitle;
@@ -60,7 +60,6 @@ namespace Clean.Droid
 			this._cardSubTitle = FindViewById<TextView> (Resource.Id.itemSubTitle);
 			this._estimate = FindViewById<TextView> (Resource.Id.estimate);
 
-			this._time = FindViewById<TextView> (Resource.Id.time);
 			this._timer = new System.Timers.Timer();
 
 			setupProgressBar ();
@@ -70,6 +69,11 @@ namespace Clean.Droid
 
 		public void startTimer(object sender, EventArgs e)
 		{
+			int count = this._prb.ChildCount;
+			for(int i = 0; i < this._prb.ChildCount; i++)
+			{
+				this._prb.GetChildAt (i).Visibility = ViewStates.Invisible;
+			}
 			this._time.SetText ("00:00:00", TextView.BufferType.Normal);
 			this._timer.Interval = 1000;
 			this._timer.Elapsed += OnTimedEvent;
@@ -100,10 +104,10 @@ namespace Clean.Droid
 		{
 
 			this._countSeconds++;
-			this._span = TimeSpan.FromSeconds(this._countSeconds);
+			this._currTask._time._secs = this._countSeconds;
 			int bars = 0;
 			if (this._currTask._time._estimate.Ticks > 0) {
-				double progressRatio = this._span.Ticks / (double)this._currTask._time._estimate.Ticks;
+				double progressRatio = this._currTask._time._timeSpan.Ticks / (double)this._currTask._time._estimate.Ticks;
 				progressRatio = progressRatio * 10;
 				progressRatio = Math.Floor (progressRatio);
 				bars = Convert.ToInt32 (progressRatio);
@@ -111,22 +115,25 @@ namespace Clean.Droid
 
 			//here backslash is must to tell that colon is
 			//not the part of format, it just a character that we want in output
-			string str = this._span.ToString(@"hh\:mm\:ss");
-			bars = bars - 1;
+			string str = this._currTask._time._timeSpan.ToString(@"hh\:mm\:ss");
+			bars = bars;
 			((Activity)this.Context).RunOnUiThread (() => {
 				if(this._time.Text != str)
 				{
 					this._time.SetText (str, TextView.BufferType.Normal);
 				}
-				if(bars > this._numOfBars && bars < 9)
+				if(bars > this._numOfBars && bars < 10)
 				{
 					this._numOfBars = bars;
-					this._prb.GetChildAt(bars).Visibility = ViewStates.Visible;
+					for(int i = 0; i < bars; i++)
+					{
+						this._prb.GetChildAt(i).Visibility = ViewStates.Visible;
+					}
 				}
-				else if(bars == 9)
+				else if(bars == 10)
 				{
 					this._numOfBars = bars;
-					this._prb.GetChildAt(bars).Visibility = ViewStates.Visible;
+					this._prb.GetChildAt(bars - 1).Visibility = ViewStates.Visible;
 				}
 			});
 
@@ -136,6 +143,7 @@ namespace Clean.Droid
 		{
 			if (!this._timer.Enabled) {
 				this._currTask = task;
+				this._countSeconds = this._currTask._time._secs;
 				this._estimate.SetText ("Estimated time: " + this._currTask._time._estimate.ToString(@"hh\:mm\:ss"), TextView.BufferType.Normal);
 				this._cardTitle.SetText (this._currTask._address._address, TextView.BufferType.Normal);
 				this._cardSubTitle.SetText (this._currTask._address._city, TextView.BufferType.Normal);

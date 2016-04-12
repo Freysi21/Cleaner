@@ -17,6 +17,7 @@ namespace Clean.Droid
 	{
 		List<Task> tasks;
 		Task currTask;
+		TimerPage Timer;
 		protected override void OnCreate(Bundle bundle)
 		{
 			
@@ -34,7 +35,7 @@ namespace Clean.Droid
 
 			adaptor.AddFragmentView((i, v, b) =>
 				{
-					TimerPage Timer = new TimerPage(v.Context, DateTime.Now, currTask);
+					Timer = new TimerPage(v.Context, DateTime.Now, currTask);
 					return Timer;
 				}
 			);
@@ -45,6 +46,9 @@ namespace Clean.Droid
 					LinearLayout itemContainer = page.FindViewById<LinearLayout>(Resource.Id.taskList);
 					foreach(Task task in tasks){
 						TaskItem item = new TaskItem(v.Context, task);
+						item.FindViewById<LinearLayout>(Resource.Id.taskCard).Click += (o, e) =>{
+							selectTask(item.getTask());
+						};
 						itemContainer.AddView(item);
 					}
 					return page;
@@ -67,6 +71,11 @@ namespace Clean.Droid
 
 			pager.SetCurrentItem (1, false);
         }
+
+		public void selectTask(Task task)
+		{
+			Timer.setTask (task);
+		}
     }
 }
 
