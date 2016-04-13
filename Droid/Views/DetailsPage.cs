@@ -23,12 +23,18 @@ namespace Clean.Droid
 		public DetailsPage (Context context, Task task) :
 			base (context)
 		{
-			this._task = task;
+			_task = task;
 			Initialize (context);
 		}
 
 		void Initialize (Context context)
 		{
+			Inflate (context, Resource.Layout.Details, this);
+		}
+
+		public void setTask(Task task)
+		{
+			_task = task;
 		}
 	}
 }

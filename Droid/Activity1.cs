@@ -18,6 +18,7 @@ namespace Clean.Droid
 		List<Task> tasks;
 		Task currTask;
 		TimerPage Timer;
+		ViewPager pager;
 		protected override void OnCreate(Bundle bundle)
 		{
 			
@@ -26,7 +27,7 @@ namespace Clean.Droid
 			SetContentView(Resource.Layout.Main);
 			ActionBar.Hide ();
 			ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
-			var pager = FindViewById<ViewPager>(Resource.Id.pager);
+			pager = FindViewById<ViewPager>(Resource.Id.pager);
 			var adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager);
 			tasks = TaskController.getTasks ();
 			currTask = tasks [0];
@@ -57,6 +58,7 @@ namespace Clean.Droid
 
 			adaptor.AddFragmentView((i, v, b) =>
 				{
+					
 					var view = i.Inflate(Resource.Layout.Details, v, false);
 					return view;
 				}
@@ -75,6 +77,8 @@ namespace Clean.Droid
 		public void selectTask(Task task)
 		{
 			Timer.setTask (task);
+			pager.SetCurrentItem (2, true);
+
 		}
     }
 }
