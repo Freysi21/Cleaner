@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Threading.Tasks;
+
 using Android.App;
 using Android.Content;
 using Android.Runtime;
@@ -8,6 +12,8 @@ using Android.Widget;
 using Android.OS;
 using Android.Support.V4.View;
 using Android.Support.V4.App;
+using Android.Graphics;
+
 using Clean;
 
 namespace Clean.Droid
@@ -17,8 +23,15 @@ namespace Clean.Droid
 	{
 		List<Task> tasks;
 		Task currTask;
+		Task detailTask;
 		TimerPage Timer;
+		DetailsPage Details;
 		ViewPager pager;
+		Button setAsTimerTaskBtn;
+
+		//ProgressBar downloadProgress;
+
+
 		protected override void OnCreate(Bundle bundle)
 		{
 			
@@ -31,6 +44,7 @@ namespace Clean.Droid
 			var adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager);
 			tasks = TaskController.getTasks ();
 			currTask = tasks [0];
+			detailTask = currTask;
 
 			pager.OffscreenPageLimit = 2;
 
@@ -58,9 +72,13 @@ namespace Clean.Droid
 
 			adaptor.AddFragmentView((i, v, b) =>
 				{
+					Details = new DetailsPage(v.Context, detailTask);
+					//var view = i.Inflate(Resource.Layout.Details, v, false);
+					Details.FindViewById<Button>(Resource.Id.setAsTimerTask).Click += (sender, e) => {
+						setAsTimerTask();
+					};
 					
-					var view = i.Inflate(Resource.Layout.Details, v, false);
-					return view;
+					return Details;
 				}
 			);
 
@@ -74,11 +92,25 @@ namespace Clean.Droid
 			pager.SetCurrentItem (1, false);
         }
 
+		public void setAsTimerTask()
+		{
+			Timer.setTask (detailTask);
+		}
+
 		public void selectTask(Task task)
 		{
-			Timer.setTask (task);
+			detailTask = task;
+			//Timer.setTask (task);
+			Details.setTask (task);
 			pager.SetCurrentItem (2, true);
-
+		}
+			
+		public void openMap(string coords)
+		{
+			var geoUri = Android.Net.Uri.Parse ("geo:42.374260,-71.120824");
+			//var geoUri = Android.Net.Uri.Parse ("geo:" + coords);
+			var mapIntent = new Intent (Intent.ActionView, geoUri);
+			StartActivity (mapIntent);
 		}
     }
 }

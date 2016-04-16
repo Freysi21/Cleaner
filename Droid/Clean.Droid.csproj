@@ -75,6 +75,7 @@
     <Compile Include="Views\ClockView.cs" />
     <Compile Include="Views\TaskItem.cs" />
     <Compile Include="Views\TimerPage.cs" />
+    <Compile Include="Dialogs\Details_dialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -105,6 +106,7 @@
     <AndroidResource Include="Resources\drawable\Checkbox.xml" />
     <AndroidResource Include="Resources\values-v21\styles.xml" />
     <AndroidResource Include="Resources\layout\progressBarItem.xml" />
+    <AndroidResource Include="Resources\drawable\googlelogo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Vector.Drawable.23.2.1\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Vector.Drawable.23.2.1\build\Xamarin.Android.Support.Vector.Drawable.targets')" />
@@ -113,6 +115,7 @@
     <Folder Include="Views\" />
     <Folder Include="Assets\fonts\" />
     <Folder Include="Resources\values-v21\" />
+    <Folder Include="Dialogs\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\digital-7 %28mono italic%29.ttf" />

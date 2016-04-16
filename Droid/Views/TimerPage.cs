@@ -15,6 +15,8 @@ using Android.Widget;
 using Android.Graphics;
 using Android.Support.Graphics.Drawable;
 
+using Clean;
+
 namespace Clean.Droid
 {
 	public class TimerPage : RelativeLayout
@@ -118,6 +120,7 @@ namespace Clean.Droid
 
 		public void stopTimer(object sender, EventArgs e)
 		{
+			TaskController.setTask (this._currTask);
 			this._timer.Enabled = false;
 			this._btnGroup3.Visibility = ViewStates.Visible;
 			this._btnGroup2.Visibility = ViewStates.Gone;

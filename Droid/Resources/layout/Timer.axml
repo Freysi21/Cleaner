@@ -11,7 +11,7 @@
         android:layout_weight="0.30"
         android:gravity="center">
         <TextView
-            android:text="AÞ Þrif"
+            android:text="Timer"
             android:textColor="@color/aClean_white"
             android:textSize="50dp"
             android:layout_width="wrap_content"
